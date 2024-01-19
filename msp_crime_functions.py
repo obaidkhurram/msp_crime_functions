@@ -1,8 +1,6 @@
 import math
 import pandas as pd
 import numpy as np
-
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.graph_objects as go
@@ -61,8 +59,6 @@ def apply_text_fixes(text, fix_map):
         text = text.replace(key, value)
     return text
 
-
-import plotly.
 def train_vs_test_plotly(y_train,y_test,y_pred):
     trace0 = go.Scatter(
         x=y_train.index,
