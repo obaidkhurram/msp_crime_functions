@@ -1,6 +1,12 @@
 import math
 import pandas as pd
 import numpy as np
+
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.graph_objects as go
+
 # define a function that will allow us to center around a particular radius
 def filter_within_radius(df, center_lat, center_lon, radius_km):
     """
@@ -54,3 +60,44 @@ def apply_text_fixes(text, fix_map):
     for key, value in fix_map.items():
         text = text.replace(key, value)
     return text
+
+
+import plotly.
+def train_vs_test_plotly(y_train,y_test,y_pred):
+    trace0 = go.Scatter(
+        x=y_train.index,
+        y=y_train,
+        mode="lines+markers",
+        name='Training',
+        marker=dict(color='grey',size=10),
+        line=dict(width=2))
+    trace1 = go.Scatter(
+        x=y_test.index,
+        y=y_test,
+        mode='lines+markers',
+        name='Actual',
+        marker=dict(color='blue',size=10),
+        line=dict(width=2)
+    )
+
+    trace2 = go.Scatter(
+        x=y_test.index,
+        y=y_pred,
+        mode='lines+markers',
+        name='Predicted',
+        marker=dict(color='red'),
+        line=dict(width=1)
+    )
+
+    # Create the figure
+    fig = go.Figure(data=[trace0,trace1, trace2])
+
+    # Update layout
+    fig.update_layout(
+        title='Actual vs Predicted Numbers of Crime Throughout 2023',
+        xaxis_title='Date',
+        yaxis_title='Number of Crimes',
+        legend_title='Legend',
+        template="plotly"
+    )
+    fig.show()
